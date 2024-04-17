@@ -1,16 +1,20 @@
 <template>
-  <h1 class="text-center">Ciao</h1>
-  <i class="fa fa-solid fa-home"></i>
+  <HeaderComponent/>
+  <MainComponent/>
+  
 </template>
 
 <script>
 import { store } from './store.js';
 import axios from 'axios';
+import HeaderComponent from './components/HeaderComponent.vue';
+import MainComponent from './components/MainComponent.vue';
 
 export default {
   name: 'App',
   components: {
-
+    HeaderComponent,
+    MainComponent
   },
   data() {
     return {
@@ -31,6 +35,7 @@ export default {
               iamge: this.store.imageUrl + movie.poster_path
             }
           });
+          console.log(this.store.movies);
         })
         .catch((err) => {
           console.log(err);
@@ -52,6 +57,7 @@ export default {
               iamge: this.store.imageUrl + tv.backdrop_path
             }
           });
+          console.log(this.store.tvs);
         })
         .catch((err) => {
           console.log(err);
@@ -61,6 +67,13 @@ export default {
         });
     },
 
+  },
+  mounted() {
+    
+  },
+  created() {
+    this.getMovies();
+    this.getTvs();
   }
 }
 </script>
