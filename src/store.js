@@ -1,16 +1,23 @@
-import {reactive} from 'vue';
+import { reactive } from 'vue';
 
 export const store = reactive({
-    apiUrl: '',
-    endPoint: {
-      },
-      options: {
-          params: {
-          }
-      },
-      // cards: [],
-      isLoading: false,
-      error:{
-        message: null
-      }
+  apiUrl: 'https://api.themoviedb.org/3/',
+  endPoint: {
+    movie: 'search/movie',
+    tv: 'search/tv'
+  },
+  options: {
+    params: {
+      api_key: '071d1fb8764d34420176e0d719b1f86e',
+      language: 'it-IT',
+      query: ''
+    }
+  },
+  movies: [],
+  tvs: [],
+  imageUrl: 'https://image.tmdb.org/t/p/original',
+  isLoading: false,
+  error: {
+    message: null
+  }
 });
