@@ -2,6 +2,7 @@
   <HeaderComponent/>
   <MainComponent/>
   
+  
 </template>
 
 <script>
