@@ -1,8 +1,9 @@
 <template>
-  <HeaderComponent/>
-  <MainComponent/>
-  
-  
+  <HeaderComponent />
+  <MainComponent />
+  <div :class="`fi fi-${movie.language} p-5 `" v-for="movie in store.movies" :key="movie">
+    
+  </div>
 </template>
 
 <script>
@@ -31,7 +32,7 @@ export default {
             return {
               title: movie.title,
               oTitle: movie.original_title,
-              language: movie.original_language,
+              language: this.getFlags(movie.original_language),
               vote: movie.vote_average,
               iamge: this.store.imageUrl + movie.poster_path
             }
@@ -67,10 +68,29 @@ export default {
           this.store.isLoading = false;
         });
     },
+    getFlags(language) {
+      switch (language) {
+        case 'en': return 'gb'
+        case 'ja': return 'jp'
+        case 'zh': return 'cn'
+        case 'he': return 'il'
+        case 'ar': return 'sa'
+        case 'ko': return 'kr'
+        case 'nb': return 'no'
+        case 'sv': return 'se'
+        case 'el': return 'gr'
+        case 'cs': return 'cz'
+        case 'da': return 'dk'
+        case 'fa': return 'ir'
+        case 'hi': return 'in'
+        case 'uk': return 'ua'
+        default: return language
+      }
 
+    }
   },
   mounted() {
-    
+
   },
   created() {
     this.getMovies();
