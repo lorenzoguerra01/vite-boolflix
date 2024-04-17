@@ -1,6 +1,7 @@
 <template>
   <HeaderComponent />
   <MainComponent />
+
 </template>
 
 <script>
@@ -17,7 +18,7 @@ export default {
   },
   data() {
     return {
-      store
+      store,
     }
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
               title: movie.title,
               oTitle: movie.original_title,
               language: this.getFlags(movie.original_language),
-              vote: movie.vote_average,
+              vote: Math.ceil(movie.vote_average / 2),
               image: this.store.imageUrl + movie.poster_path
             }
           });
@@ -52,7 +53,7 @@ export default {
               title: tv.name,
               oTitle: tv.original_name,
               language: this.getFlags(tv.original_language),
-              vote: tv.vote_average,
+              vote: Math.ceil(tv.vote_average / 2),
               image: this.store.imageUrl + tv.backdrop_path
             }
           });
