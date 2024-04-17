@@ -1,9 +1,6 @@
 <template>
   <HeaderComponent />
   <MainComponent />
-  <div :class="`fi fi-${movie.language} p-5 `" v-for="movie in store.movies" :key="movie">
-    
-  </div>
 </template>
 
 <script>
@@ -34,7 +31,7 @@ export default {
               oTitle: movie.original_title,
               language: this.getFlags(movie.original_language),
               vote: movie.vote_average,
-              iamge: this.store.imageUrl + movie.poster_path
+              image: this.store.imageUrl + movie.poster_path
             }
           });
           console.log(this.store.movies);
@@ -54,9 +51,9 @@ export default {
             return {
               title: tv.name,
               oTitle: tv.original_name,
-              language: tv.original_language,
+              language: this.getFlags(tv.original_language),
               vote: tv.vote_average,
-              iamge: this.store.imageUrl + tv.backdrop_path
+              image: this.store.imageUrl + tv.backdrop_path
             }
           });
           console.log(this.store.tvs);
