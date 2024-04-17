@@ -1,6 +1,6 @@
 <template>
     <div class="card h-100">
-        <img :src="image" class="card-img-top" alt="...">
+        <img :src="image" class="card-img-top" :alt="title">
         <div class="card-body">
             <h5 class="card-title">{{ title }}</h5>
             <p class="card-text">{{ oTitle }}</p>
@@ -21,9 +21,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
-img {
-}
-
-</style>
+<style lang="scss" scoped></style>
