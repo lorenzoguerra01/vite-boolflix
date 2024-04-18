@@ -32,7 +32,8 @@ export default {
               oTitle: movie.original_title,
               language: this.getFlags(movie.original_language),
               vote: Math.ceil(movie.vote_average / 2),
-              image: this.store.imageUrl + movie.poster_path
+              image: this.store.imageUrl + movie.poster_path,
+              overview: movie.overview
             }
           });
           console.log(this.store.movies);
@@ -54,7 +55,8 @@ export default {
               oTitle: tv.original_name,
               language: this.getFlags(tv.original_language),
               vote: Math.ceil(tv.vote_average / 2),
-              image: this.store.imageUrl + tv.backdrop_path
+              image: this.store.imageUrl + tv.backdrop_path,
+              overview: tv.overview
             }
           });
           console.log(this.store.tvs);

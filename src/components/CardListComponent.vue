@@ -3,7 +3,7 @@
         <div class="row g-3" v-if="!store.isLoading">
             <div class="col-12 col-md-6 col-lg-3" v-for="(watch, index) in store[type]" :key="index">
                 <CardComponent :title="watch.title" :oTitle="watch.oTitle" :language="watch.language"
-                    :vote="watch.vote" :image="watch.image" />
+                    :vote="watch.vote" :image="watch.image" :overview="watch.overview" />
             </div>
         </div>
         <ApiLoader v-else />

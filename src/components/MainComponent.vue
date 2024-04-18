@@ -34,5 +34,6 @@ export default {
 }
 main {
     min-height: calc(100vh - 100px);
+    color: white;
 }
 </style>

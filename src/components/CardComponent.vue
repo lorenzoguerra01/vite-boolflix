@@ -1,7 +1,7 @@
 <template>
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="card flip-card-front">
+            <div class="card flip-card-front ">
                 <img :src="image" class="card-img-top" :alt="title">
                 <div class="card-body">
                     <h5 class="card-title">{{ title }}</h5>
@@ -15,10 +15,8 @@
                     <span :class="` border fi fi-${language} position-bottom-right`"></span>
                 </div>
             </div>
-            <div class="card flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
+            <div class="card flip-card-back p-3">
+                <span>{{ overview }}</span>
             </div>
         </div>
     </div>
@@ -29,7 +27,7 @@
 import { store } from '../store.js';
 export default {
     name: 'CardComponent',
-    props: ['title', 'oTitle', 'language', 'vote', 'image'],
+    props: ['title', 'oTitle', 'language', 'vote', 'image', 'overview'],
     data() {
         return {
             store
@@ -55,7 +53,6 @@ export default {
 .flip-card {
     background-color: transparent;
     height: 100%;
-    border: 1px solid #f1f1f1;
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
 }
@@ -63,7 +60,6 @@ export default {
 /* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
-    width: 100%;
     height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
@@ -77,7 +73,8 @@ export default {
 /* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
-    width: 100%;
+    color: white !important;
+    background-color: darkgray;
     height: 100%;
     -webkit-backface-visibility: hidden;
     /* Safari */
@@ -86,18 +83,16 @@ export default {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-    background-color: #bbb;
     color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-    width: 50%;
-    background-color: dodgerblue;
-    color: white;
     transform: rotateY(180deg);
     position: absolute;
     top: 0;
     left: 0;
+    overflow-y: auto;
+    scrollbar-width: none;    
 }
 </style>
