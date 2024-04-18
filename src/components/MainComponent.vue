@@ -1,13 +1,18 @@
 <template>
-    <main class="bg-dark">
-        <h2 v-if="!store.movies.length" class=" text-center text-white  fw-bold fs-1 p-5  ">Immettere il Titolo del Film
+    <main class="bg-dark pb-5 ">
+        <h2 v-if="!store.movies.length && !store.tvs.length" class=" text-center text-white  fw-bold fs-1 p-5  ">
+            Selezionare uno dei campi nel menù in alto <br><br>
+            Immettere il Titolo del Film
             o della
             Serie TV nella barra di ricerca in alto a destra</h2>
-
-        <h2 class="p-5" v-if="store.movies.length">Film</h2>
-        <CardListComponent type="movies" />
-        <h2 class="p-5" v-if="store.movies.length">Serie TV</h2>
-        <CardListComponent type="tvs" />
+        <div v-if="store.movies.length && store.flagMovie">
+            <h2 class="p-5" v-if="store.movies.length">Film</h2>
+            <CardListComponent type="movies" />
+        </div>
+        <div v-if="store.tvs.length && store.flagTv">
+            <h2 class="p-5" v-if="store.movies.length">Serie TV</h2>
+            <CardListComponent type="tvs" />
+        </div>
     </main>
 </template>
 
@@ -21,7 +26,7 @@ export default {
     },
     data() {
         return {
-            store
+            store,
         }
     },
 }
