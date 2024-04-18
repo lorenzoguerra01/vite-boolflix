@@ -32,7 +32,7 @@ export default {
               oTitle: movie.original_title,
               language: this.getFlags(movie.original_language),
               vote: Math.ceil(movie.vote_average / 2),
-              image: this.store.imageUrl + movie.poster_path,
+              image: this.unkownImg(movie.poster_path),
               overview: movie.overview
             }
           });
@@ -55,7 +55,7 @@ export default {
               oTitle: tv.original_name,
               language: this.getFlags(tv.original_language),
               vote: Math.ceil(tv.vote_average / 2),
-              image: this.store.imageUrl + tv.backdrop_path,
+              image: this.unkownImg(tv.backdrop_path),
               overview: tv.overview
             }
           });
@@ -87,6 +87,14 @@ export default {
         default: return language
       }
 
+    },
+    unkownImg(img) {
+      if (img === null) {
+        return 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png'
+        // return 'https://www.freeiconspng.com/uploads/no-image-icon-11.PNG'
+      } else {
+        return this.store.imageUrl + img
+      }
     }
   },
   mounted() {
